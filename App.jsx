@@ -45,20 +45,20 @@ const App = () => {
 
     const handlePress = async (event) => {
         if (!selectedImage || imageProcessing || !displayDimensions) return;
-    
+
         const { locationX, locationY } = event.nativeEvent;
-        
+
         const scaleX = originalDimensions.width / displayDimensions.width;
         const scaleY = originalDimensions.height / displayDimensions.height;
-        
+
         const originalX = locationX * scaleX;
         const originalY = locationY * scaleY;
-        
+
         const normalizedX = originalX / originalDimensions.width;
         const normalizedY = originalY / originalDimensions.height;
-        
+
         setSelectPoints([{ x: locationX, y: locationY }]);
-    
+
         try {
             setImageProcessing(true);
             const maskBase64 = await SAMModule.processImage(
@@ -108,13 +108,13 @@ const App = () => {
                         position: 'relative'
                     }}
                 >
-                    { mask ? <Image
+                    {mask ? <Image
                         source={{ uri: `data:image/jpeg;base64,${mask}` }}
                         style={{
                             height: 400,
                             width: 400,
                         }}
-                        /> : 
+                    /> :
                         <Image
                             source={{ uri: `data:image/png;base64,${selectedImage}` }}
                             style={{
@@ -122,8 +122,8 @@ const App = () => {
                                 width: 400,
                             }}
                         />
-                        }
-                    {selectPoints.length >0 && selectPoints.map((point, index) => (
+                    }
+                    {selectPoints.length > 0 && selectPoints.map((point, index) => (
                         <View
                             key={index}
                             style={{
@@ -172,13 +172,13 @@ const styles = StyleSheet.create({
     },
     imageWrapper: {
         width: DISPLAY_WIDTH,
-        height:DISPLAY_HEIGHT,
+        height: DISPLAY_HEIGHT,
         overflow: 'hidden',
         backgroundColor: '#fff',
     },
     image: {
         width: DISPLAY_WIDTH,
-        height:DISPLAY_HEIGHT,
+        height: DISPLAY_HEIGHT,
         position: 'absolute',
         top: 0,
         left: 0,
