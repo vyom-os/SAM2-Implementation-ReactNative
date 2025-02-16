@@ -21,6 +21,7 @@ For faster inference and to avoid inturruption to UI thread we have used kotlin'
 __Note__: For selecting multiple points just keep on adding the points in the points array with label 1. For removing a segment send a point of that segment with label 0.
 
 
+
 __Follow steps to run the app__
 
 > git clone https://github.com/vyom-os/SAM2ImplementationReactNative.git
@@ -31,5 +32,4 @@ __Follow steps to run the app__
 
 > npx react-native run-android     //run the app
 
-
-
+__Download the apk :__ https://drive.google.com/file/d/1Pm_2DqVaqqe7IsGamx2ghmU7HrT7esrP/view?usp=drive_link
