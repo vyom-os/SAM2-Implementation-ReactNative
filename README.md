@@ -26,7 +26,7 @@ __Follow steps to run the app__
 
 > git clone https://github.com/vyom-os/SAM2ImplementationReactNative.git
 
-> Create an “assets” folder in android/app/src/main/assets. Paste the onnx models there. 
+> Create an “assets” folder in android/app/src/main/. Paste the onnx models there. 
 
 > npm i      //Installing the packages
 
