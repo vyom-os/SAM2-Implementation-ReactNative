@@ -1,25 +1,24 @@
 ### Segment Anything Model 2 in React Native(Android part)
-Segment Anything Model 2 (SAM 2) is a foundation model towards solving promptable visual segmentation in images and videos. We extend SAM to video by considering images as a video with a single frame. The model design is a simple transformer architecture with streaming memory for real-time video processing. We build a model-in-the-loop data engine, which improves model and data via user interaction, to collect our SA-V dataset, the largest video segmentation dataset to date. SAM 2 trained on our data provides strong performance across a wide range of tasks and visual domains.
+Segment Anything Model 2 (SAM 2) is a foundation model aimed at solving promptable visual segmentation in images and videos. By integrating Vyom with SAM2, we enable real-time image processing and machine learning image segmentation capabilities, delivering AI image segmentation solutions that power real-time data analysis. Meta extended SAM2 to video by considering images as a single-frame video, leveraging SAM2 image processing to unify image segmentation and other critical applications.
 
 __Download SAM2__ onnx model from https://huggingface.co/models?p=1&sort=trending&search=segment+anything
 Preferabley generate it yourself. Follow the steps given in https://github.com/facebookresearch/segment-anything?tab=readme-ov-file#onnx-export
 
-__ONNX Runtime__ is a cross-platform machine-learning model accelerator, with a flexible interface to integrate hardware-specific libraries. ONNX Runtime can be used with models from PyTorch, Tensorflow/Keras, TFLite, scikit-learn, and other frameworks. Checkout https://onnxruntime.ai/docs/
+**ONNX Runtime** is a high-performance cross-platform machine learning model accelerator, enabling integration with various hardware libraries. **ONNX Runtime for deep learning models** supports models from frameworks like PyTorch, TensorFlow/Keras, TFLite, scikit-learn, and more. We use **ONNX Runtime integration for mobile apps** to accelerate the model inference, particularly in the context of **real-time AI inference for mobile devices**.
 
-Follow the microsoft's onnxruntime-inference-examples for better understanding of onnx runtime. https://github.com/microsoft/onnxruntime-inference-examples
+For more details on **ONNX Runtime**, visit the official [ONNX Runtime Documentation](https://onnxruntime.ai/docs/). Also, check out the [Microsoft ONNX Runtime Inference Examples](https://github.com/microsoft/onnxruntime-inference-examples) for further understanding of ONNX's functionality.
 
 
 __Understanding the working__
-Segment Anything Model comes in two parts. One is encoder, that encodes and prepares the image for segmentation. Other is decoder that takes the points and encoder result to produce the mask. 
+The **Segment Anything Model** consists of two parts: the **encoder** and the **decoder**. The encoder prepares and encodes the image for segmentation, while the decoder processes the points from the encoder's output to produce the segmentation masks.
 
-SAM is trained with images of dimension 1024X1024. So the model scales the image to 1024X1024 format before working on it.  Keeping this in mind you should mindfully give the input points of the image(scaled to 1024). 
+SAM2 is trained with images of dimension **1024x1024**. The model scales the image to this format before performing any processing. It’s crucial to provide input points scaled to **1024x1024** for accurate results.
 
-The decoder produces multiple masks with different scores(ranging between 0 and 1). The score is the models confidence on that mask. Each point in a mask is a set of x and y coordinate of image.  Also each point has its own value(ranging between 0 and 1) again representing model’s confidence on that point. You can filter the mask points based on these scores.
+The decoder produces multiple masks, each associated with a score (ranging between 0 and 1). The score reflects the model's confidence in each mask, with each point in the mask representing its coordinates in the image. Each point also carries a confidence score, allowing you to filter **low-confidence masks or points** when needed.
 
-For faster inference and to avoid inturruption to UI thread we have used kotlin's coroutines to load models and process image. We created a native module and exposed it to React Native component. 
+For faster inference and to avoid interruptions to the UI thread, we use **Kotlin Coroutines for machine learning**. This ensures asynchronous loading of the **SAM2 encoder and decoder ONNX files** without blocking the React Native UI thread. We created a native module in **React Native with ONNX Runtime** to expose this segmentation functionality to the React Native components for seamless integration.
 
-__Note__: For selecting multiple points just keep on adding the points in the points array with label 1. For removing a segment send a point of that segment with label 0.
-
+**Note**: For selecting multiple points, keep adding the points in the points array with label 1. To remove a segment, add a point of that segment with label 0.
 
 
 __Follow steps to run the app__
@@ -30,6 +29,7 @@ __Follow steps to run the app__
 
 > npm i      //Installing the packages
 
-> npx react-native run-android     //run the app
 
-__Download the apk :__ https://drive.google.com/file/d/1Pm_2DqVaqqe7IsGamx2ghmU7HrT7esrP/view?usp=drive_link
+By incorporating **Vyom integration** with **SAM2 model**, we create powerful **AI-powered mobile apps for segmentation**, enhancing real-time **image analysis for mobile** and boosting the capabilities of **object segmentation in mobile apps**. Using ONNX runtime not only improved the performance of mobile apps but also ensured smooth **real-time data analysis with SAM2**, enabling users to carry out **AI image segmentation** tasks with **real-time decision-making**.
+
+Feel free to explore the integration of **SAM2 (Segment Anything Model 2)** in **React Native** and dive into our **open-source AI model integration** for advanced **image segmentation** and other critical use cases.
