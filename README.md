@@ -1,3 +1,4 @@
+![alt text](https://github.com/vyom-os/SAM2-Implementation-ReactNative/blob/main/android/app/src/main/java/com/sam2implementationreactnative/Text_3.png)
 ### Segment Anything Model 2 in React Native(Android part)
 Segment Anything Model 2 (SAM 2) is a foundation model aimed at solving promptable visual segmentation in images and videos. By integrating Vyom with SAM2, we enable real-time image processing and machine learning image segmentation capabilities, delivering AI image segmentation solutions that power real-time data analysis. Meta extended SAM2 to video by considering images as a single-frame video, leveraging SAM2 image processing to unify image segmentation and other critical applications.
 
